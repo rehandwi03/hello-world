@@ -8,7 +8,7 @@ pipeline {
        stage('Build') {
            agent {
                docker {
-                   image 'golang'
+                   image 'golang:latest'
                }
            }
            steps {
@@ -36,7 +36,7 @@ pipeline {
                // Remove cached test results.
                sh 'go clean -cache'
                // Run Unit Tests.
-               sh 'go test ./... -v -short'           
+            //    sh 'go test ./... -v -short'           
            }
        }
        stage('Publish') {

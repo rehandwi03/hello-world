@@ -6,6 +6,9 @@
         definition: ""
         validate_certs: no
         namespace: default
+        validate:
+          fail_on_error: no
+          strict: yes
     - name: Deploy the application
       k8s:
         state: present

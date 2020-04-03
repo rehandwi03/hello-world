@@ -3,6 +3,7 @@ pipeline {
    environment {
        registry = "2017330017/k8scicd"
        GOCACHE = "/tmp"
+       image_id = registry + ":$BUILD_NUMBER"
    }
    stages {
        stage('Build') {
@@ -55,7 +56,6 @@ pipeline {
        }
        stage ('Deploy') {
            steps {
-               def image_id = registry + ":$BUILD_NUMBER"
                sh "chmod +x changeTag.sh"
                sh "./changeTag.sh ${image_id}"
                script{

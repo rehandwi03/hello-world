@@ -58,8 +58,8 @@ pipeline {
                script{
                    sh "chmod +x changeTag.sh"
                    sh "./changeTag.sh ${BUILD_NUMBER}"
-                   sh "kubectl apply -f deployment.yml"
-                   sh "kubectl apply -f service.yml"
+                   sh "kubectl create -f deployment1.yml"
+                   sh "kubectl create -f service.yml"
                 //    try{
                 //    }catch(error){
                 //         sh "kubectl create -f deployment.yml"

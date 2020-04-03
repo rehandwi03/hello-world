@@ -58,7 +58,6 @@ pipeline {
                script{
                    sh "chmod +x changeTag.sh"
                    sh "./changeTag.sh ${BUILD_NUMBER}"
-                   grep "image deployment.yaml"
                    sh "kubectl apply -f deployment.yml"
                    sh "kubectl apply -f service.yml"
                 //    try{

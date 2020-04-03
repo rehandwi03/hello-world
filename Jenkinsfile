@@ -56,9 +56,9 @@ pipeline {
        stage ('Deploy') {
            steps {
                script{
-                   def image_id = registry + ":$BUILD_NUMBER"
+                //    def image_id = registry + ":$BUILD_NUMBER"
                    sh "chmod +x changeTag.sh"
-                   sh "./changeTag.sh ${image_id}"
+                   sh "./changeTag.sh ${BUILD_NUMBER}"
                    try{
                         sh "kubectl apply -f deployment.yml"
                         sh "kubectl apply -f service.yml"

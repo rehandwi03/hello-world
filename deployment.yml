@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: 201730017/k8scicd:tagVersion
+          image: 2017330017/k8scicd:tagVersion
           resources:
             requests:
               cpu: 10m

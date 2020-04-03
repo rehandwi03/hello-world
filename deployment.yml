@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: ""
+          image: tagVersion
           resources:
             requests:
               cpu: 10m

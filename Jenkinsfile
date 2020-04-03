@@ -58,13 +58,14 @@ pipeline {
                script{
                    sh "chmod +x changeTag.sh"
                    sh "./changeTag.sh ${BUILD_NUMBER}"
-                   try{
-                        sh "kubectl apply -f deployment.yml"
-                        sh "kubectl apply -f service.yml"
-                   }catch(error){
-                        sh "kubectl create -f deployment.yml"
-                        sh "kubectl create -f service.yml"
-                        }
+                   grep "image deployment.yaml"
+                   sh "kubectl apply -f deployment.yml"
+                   sh "kubectl apply -f service.yml"
+                //    try{
+                //    }catch(error){
+                //         sh "kubectl create -f deployment.yml"
+                //         sh "kubectl create -f service.yml"
+                //         }
                }
             //    script{
             //        def image_id = registry + ":$BUILD_NUMBER"

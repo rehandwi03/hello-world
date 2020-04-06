@@ -55,22 +55,16 @@ pipeline {
        }
        stage ('Deploy') {
            steps {
-               script{
-                   sh "chmod +x changeTag.sh"
-                   sh "./changeTag.sh ${BUILD_NUMBER}"
-                   sh "kubectl delete -f deployment1.yml"
-                   sh "kubectl create -f deployment1.yml"
-                //    sh "kubectl create -f service.yml"
-                //    try{
-                //    }catch(error){
-                //         sh "kubectl create -f deployment.yml"
-                //         sh "kubectl create -f service.yml"
-                //         }
-               }
             //    script{
-            //        def image_id = registry + ":$BUILD_NUMBER"
-            //        sh "ansible-playbook  playbook.yml --extra-vars \"image_id=${image_id}\" -vvv"
+            //        sh "chmod +x changeTag.sh"
+            //        sh "./changeTag.sh ${BUILD_NUMBER}"
+            //        sh "kubectl delete -f deployment1.yml"
+            //        sh "kubectl create -f deployment1.yml"
             //    }
+               script{
+                   def image_id = registry + ":$BUILD_NUMBER"
+                   sh "ansible-playbook  playbook.yml --extra-vars \"image_id=${image_id}\" -vvv"
+               }
            }
        }
    }
